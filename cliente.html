@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <title>Ejemplo utilizando Socket.IO</title>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+</head>
+<body>
+
+
+<script>
+
+  var socket = io.connect('http://localhost');
+  
+  socket.on('hm', function (data) {
+
+    socket.emit('otro evento', { envio: 'Este mensaje va dirigido al servidor!!!' });   
+  
+  });
+
+  socket.on('mensaje', function (data) {
+    $('#mensaje').html(data.txt);
+    $('#mensaje2').html(data.txt2);
+  });
+
+
+
+</script>
+
+<p id="mensaje"></p>
+<p id="mensaje2"></p>
+    
+</body>
+</html>
